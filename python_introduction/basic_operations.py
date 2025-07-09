@@ -1,10 +1,14 @@
+
+# Define the numbers
 number1 = 10
 number2 = 5
 
-addition = number1 + number2
-subtraction = number1 = number2
-multiplication = number1 * number2
+# Perform arithmetic operations
+sum_result = number1 + number2
+difference_result = number1 - number2
+product_result = number1 * number2
 
-print("Addition of: ", number1, "and", number2, "is", addition)
-print("Subtraction of: ", number1, "and", number2, "is", subtraction)
-print("Multiplication of: ", number1, "and", number2, "is", multiplication)
+# Print results in human-readable format
+print("Addition of", number1, "and", number2, "is", sum_result)
+print("Subtraction of", number1, "and", number2, "is", difference_result)
+print("Multiplication of", number1, "and", number2, "is", product_result)
