@@ -1,29 +1,39 @@
 # daily_reminder.py
 
-# Step 1: Get user input
-task = input("Enter your task: ")
-priority = input("Priority (high/medium/low): ").lower()
-time_bound = input("Is it time-bound? (yes/no): ").lower()
+# Loop to ensure the user enters valid input
+while True:
+    # Prompt for task description
+    task = input("Enter your task: ").strip()
 
-# Step 2: Customized reminder using match-case and if
+    # Prompt for priority and validate
+    priority = input("Priority (high/medium/low): ").strip().lower()
+    if priority not in ["high", "medium", "low"]:
+        print("Invalid priority. Please enter high, medium, or low.\n")
+        continue
+
+    # Prompt for time-bound status and validate
+    time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
+    if time_bound not in ["yes", "no"]:
+        print("Invalid input for time-bound. Please enter yes or no.\n")
+        continue
+
+    # If all inputs are valid, break out of loop
+    break
+
+# Use match-case for priority
 match priority:
     case "high":
-        if time_bound == "yes":
-            message = f"Reminder: '{task}' is a high priority task that requires immediate attention today!"
-        else:
-            message = f"Reminder: '{task}' is a high priority task. Try to address it as soon as possible."
+        reminder = f"Reminder: '{task}' is a high priority task"
     case "medium":
-        if time_bound == "yes":
-            message = f"Note: '{task}' is a medium priority task that should be done today if possible."
-        else:
-            message = f"Note: '{task}' is a medium priority task. Plan to do it sometime soon."
+        reminder = f"Note: '{task}' is a medium priority task"
     case "low":
-        if time_bound == "yes":
-            message = f"Notice: '{task}' is a low priority task but still needs to be completed today."
-        else:
-            message = f"Note: '{task}' is a low priority task. Consider doing it when you have free time."
-    case _:
-        message = f"Warning: Unknown priority for task '{task}'. Please enter high, medium, or low."
+        reminder = f"Note: '{task}' is a low priority task"
 
-# Step 3: Print the customized message
-print("\n" + message)
+# Use if to check if it's time-bound
+if time_bound == "yes":
+    reminder += " that requires immediate attention today!"
+else:
+    reminder += ". Consider completing it when you have free time."
+
+# Output the final customized reminder
+print("\n" + reminder)
